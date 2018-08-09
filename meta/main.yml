@@ -13,8 +13,8 @@ galaxy_info:
     - python
     - openstack
 dependencies:
-  - role: otc_vpc
-  - role: otc_ims
-  - role: otc_subnet
-  - role: otc_secgroup
-  - role: otc_eip
+  - role: eumel8.otc_vpc
+  - role: eumel8.otc_ims
+  - role: eumel8.otc_subnet
+  - role: eumel8.otc_secgroup
+  - role: eumel8.otc_eip
