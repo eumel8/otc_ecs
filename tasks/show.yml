@@ -20,4 +20,4 @@
   changed_when: false
 
 - debug:
-    msg: "{{ ecs }}"
+    msg: "{{ ecs.json }}"

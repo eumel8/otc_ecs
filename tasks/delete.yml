@@ -1,3 +1,8 @@
+- name: Lookup ecs_id
+  include: lookup.yml
+  when:
+    - ecs_name is defined
+
 - name: Send request to API (delete ECS)
   uri:
     url: "{{ AUTH_URL_ECS_CLOUD }}/{{ PROJECT_ID }}/cloudservers/delete"
@@ -17,8 +22,24 @@
   changed_when: false
   when: ecs_id is defined and ecs_id|length != 0
 
-- pause:
-    minutes: 1
+- name: Request job status from API (waiting for SUCCESS)
+  uri:
+    url: "{{ AUTH_URL_ECS_CLOUD }}/{{ PROJECT_ID }}/jobs/{{ ecs.json.job_id }}"
+    method: GET
+    return_content: yes
+    follow_redirects: "{{ uri_follow_redirects }}"
+    validate_certs: "{{ uri_validate_certs }}"
+    headers:
+      Content-Type: "application/json"
+      X-Auth-Token: "{{ token['x_subject_token'] }}"
+  register: jobstatus
+  retries: 100
+  delay: 5
+  until: jobstatus.json.status == 'SUCCESS'
+  changed_when: false
+  when:
+    - ecs is defined
+    - waitfor | bool
 
 - debug:
     msg: "{{ ecs }}"
