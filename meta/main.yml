@@ -12,7 +12,7 @@ galaxy_info:
     - cloud
     - python
     - openstack
-dependencies:
+#dependencies:
 #  - role: eumel8.otc_vpc
 #  - role: eumel8.otc_ims
 #  - role: eumel8.otc_subnet
