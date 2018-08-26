@@ -41,7 +41,7 @@
 
 - name: Set fact flavor_id if ecs_ram or ecs_vcpus is defined
   set_fact:
-    flavor_id: "{{ (flavor_result.content|from_json)|json_query('sort_by(flavors, &ram)|[?ram>=`' + ecs_ram + '` && vcpus>=`' + ecs_vcpus + '`].id|[0]') }}"
+    flavor_id: "{{ (flavor_result.content|from_json)|json_query('sort_by(flavors, &ram)|[?ram>=`' + ecs_ram + '` && vcpus>=`\"' + ecs_vcpus + '\"`].id|[0]') }}"
   when:
     - ecs_name is defined
     - (ecs_ram is defined and ecs_ram |length != 0) or (ecs_vcpus is defined and ecs_vcpus|length != 0)
