@@ -7,10 +7,9 @@ vms:
     availability_zone: "eu-de-01"
     subnet_name: "ansible-subnet01"
     secgroups: "ansible-test01"
-#      - "default-ansible"
     ecs_volumetype: "SATA"
-    ecs_ram: "2048"
-    ecs_vcpus: "2"
+    ecs_ram: 2048
+    ecs_vcpus: 2
     ecs_ipaddress: "192.168.0.102"
     ecs_adminkey: "ansible-key"
     ecs_publicip: "0.0.0.0"
