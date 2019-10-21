@@ -1,0 +1,17 @@
+{
+    "nics": [
+      {
+{% if ecs_ipaddress is defined and ecs_ipaddress|length != 0 %}  
+        "ip_address": "{{ ecs_ipaddress }}",
+{% endif %}  
+        "security_groups": [
+{% for secgroup_id in secgroup_ids %}  
+        {
+            "id": "{{ secgroup_id }}"
+        },
+{% endfor %}  
+        ],
+            "subnet_id": "{{ subnet_id }}"
+      }
+    ]
+}
