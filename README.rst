@@ -53,6 +53,11 @@ Create::
 
     ansible-playbook tenant_json.yml -e "ecs_name=ansible-test01" -e "localaction=create"
 
+
+    ./grole otc_ecs; ansible-playbook roles.yml -e "ecs_name=ansible-test01" -e "ecs_ipaddress=192.168.9.27 -e "subnet_name=ansible-subnet02" -e "secgroup_name=default" -e "localaction=create_nic" -e "waitfor=true"
+
+Ad hoc command to creates an additional Nic to an existing ECS with existing Subnet and Secgroup
+
 Show::
 
     ./grole otc_ecs; ansible-playbook roles.yml -e "ecs_name=ansible-test01" -e "localaction=show"
@@ -64,3 +69,7 @@ List::
 Delete::
 
     ./grole otc_ecs; ansible-playbook roles.yml -e "ecs_name=ansible-test01" -e "localaction=delete"
+
+    ./grole otc_ecs; ansible-playbook roles.yml -e "ecs_name=ansible-test01" -e "ecs_ipaddress=192.168.9.27" -e "localaction=delete_nic" -e "waitfor=true"
+
+Ad hoc command to delete an additional Nic (can't be the default Nic on an ECS)
