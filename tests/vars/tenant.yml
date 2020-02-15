@@ -10,6 +10,7 @@ vms:
     ecs_volumetype: "SATA"
     ecs_ram: 2048
     ecs_vcpus: "2"
+    flavor_id: "s2.medium.1"
     ecs_ipaddress: "192.168.0.102"
     ecs_adminkey: "ansible-key"
     ecs_publicip: "0.0.0.0"

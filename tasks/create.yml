@@ -1,5 +1,7 @@
 - name: Lookup flavor_id
   include: lookup.yml
+  when:
+    - flavor_id is not defined
 
 - name: Send request to API (list VPC for lookup)
   uri:
