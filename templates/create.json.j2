@@ -4,7 +4,7 @@
         "name": "{{ ecs_name }}",
         "imageRef": "{{ image_id }}",
         "root_volume": {
-{% if ecs_volumesize is defined and ecs_volumesize|length != 0 %}  
+{% if ecs_volumesize is defined and ecs_volumesize > 0 %}  
             "size": "{{ ecs_volumesize }}",
 {% endif %}  
             "volumetype": "{{ ecs_volumetype }}"
