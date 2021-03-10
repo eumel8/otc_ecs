@@ -1,3 +1,0 @@
-- name: action start
-  delegate_to: "{{ delegateto }}"
-  import_tasks: start.yml
