@@ -1,0 +1,24 @@
+---
+- hosts: localhost
+  gather_facts: no
+  vars_files:
+   - "vars/tenant.yml"
+  vars:
+    # ECS
+    image_name: "{{ vms[ecs_name].image_name }}"
+    availability_zone: "{{ vms[ecs_name].availability_zone }}"
+    vpc_name: "{{ vms[ecs_name].vpc_name }}"
+    subnet_name: "{{ vms[ecs_name].subnet_name }}"
+    secgroups: "{{ vms[ecs_name].secgroups }}"
+    secgrouprules: "{{ securitygroups[secgroup_name] }}"
+    ecs_ipaddress: "{{ vms[ecs_name].ecs_ipaddress }}"
+    public_ip_address: "{{ vms[ecs_name].ecs_publicip }}"
+    ecs_volumetype: "{{ vms[ecs_name].ecs_volumetype }}"
+    ecs_ram: "{{ vms[ecs_name].ecs_ram }}"
+    ecs_vcpus: "{{ vms[ecs_name].ecs_vcpus }}"
+    flavor_id: "{{ vms[ecs_name].flavor_id }}"
+    ecs_adminkey: "{{ vms[ecs_name].ecs_adminkey }}"
+
+  roles:
+    - role: "otc_auth"
+    - role: "otc_ecs"
