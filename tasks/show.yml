@@ -19,5 +19,6 @@
   until: ecs.status == 200
   changed_when: false
 
-- debug:
+- name: ecs
+  debug:
     msg: "{{ ecs.json }}"

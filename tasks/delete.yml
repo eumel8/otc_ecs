@@ -41,5 +41,6 @@
     - ecs is defined
     - waitfor | bool
 
-- debug:
+- name: ecs
+  debug:
     msg: "{{ ecs }}"

@@ -14,5 +14,6 @@
   until: ecslist.status == 200
   changed_when: false
 
-- debug:
+- name: ecslist
+  debug:
     msg: "{{ ecslist.json }}"
