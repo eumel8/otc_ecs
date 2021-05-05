@@ -16,6 +16,7 @@
     ecs_volumetype: "{{ vms[ecs_name].ecs_volumetype }}"
     ecs_ram: "{{ vms[ecs_name].ecs_ram }}"
     ecs_vcpus: "{{ vms[ecs_name].ecs_vcpus }}"
+    flavor_id: "{{ vms[ecs_name].flavor_id }}"
     ecs_adminkey: "{{ vms[ecs_name].ecs_adminkey }}"
 
   roles:
