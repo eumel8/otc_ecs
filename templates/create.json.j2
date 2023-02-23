@@ -4,7 +4,13 @@
         "name": "{{ ecs_name }}",
         "imageRef": "{{ image_id }}",
         "root_volume": {
-{% if ecs_volumesize is defined and ecs_volumesize > 0 %}  
+{% if ecs_volume_encryption_cmkid is defined %}
+        "metadata": {
+            "__system__encrypted": "1",
+            "__system__cmkid": "{{ ecs_volume_encryption_cmkid }}"
+        },
+{% endif %}
+{% if ecs_volumesize is defined and ecs_volumesize|int > 0 %}  
             "size": "{{ ecs_volumesize }}",
 {% endif %}  
             "volumetype": "{{ ecs_volumetype }}"
